@@ -15,6 +15,16 @@ services:
     ports:
      - "6379:6379"
 
+  myportainer:
+    container_name: myportainer
+    restart: always
+    ports:
+      - "8060:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
   mycatalog.api:
     container_name: mycatalog.api
     environment:

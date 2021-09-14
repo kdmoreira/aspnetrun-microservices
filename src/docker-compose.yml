@@ -10,6 +10,12 @@ services:
   myportainer:
     image: portainer/portainer-ce
 
+  mydiscountdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
   mycatalog.api:
     image: ${DOCKER_REGISTRY-}mycatalogapi
     build:
@@ -22,6 +28,14 @@ services:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
 
+  mydiscount.api:
+    image: ${DOCKER_REGISTRY-}mydiscountapi
+    build:
+      context: .
+      dockerfile: Services/Discount.API/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
+  postgres_data:
+  pgadmin_data:

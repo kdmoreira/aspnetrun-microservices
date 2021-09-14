@@ -15,6 +15,29 @@ services:
     ports:
      - "6379:6379"
 
+  mydiscountdb:
+    container_name: mydiscountdb
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=MyDiscountDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+        - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+
   myportainer:
     container_name: myportainer
     restart: always
@@ -47,3 +70,14 @@ services:
       - "443"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  mydiscount.api:
+    container_name: mydiscount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=mydiscountdb;Port=5432;Database=MyDiscountDB;User Id=admin;Password=admin1234"
+    depends_on:
+      - mydiscountdb
+    ports:
+      - "8002:80"
+

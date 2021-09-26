@@ -56,20 +56,18 @@ services:
     depends_on:
       - mycatalogdb
     ports:
-      - "8050:80"
+      - "8000:80"
 
   mybasket.api:
     container_name: mybasket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=mybasketdb:6379"
+      - "GrpcSettings:DiscountUrl=https://discount.grpc"
     depends_on:
       - mybasketdb
     ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8001:80"
 
   mydiscount.api:
     container_name: mydiscount.api
@@ -81,3 +79,13 @@ services:
     ports:
       - "8002:80"
 
+
+  mydiscount.grpc:
+    container_name: mydiscount.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=mydiscountdb;Port=5432;Database=MyDiscountDB;User Id=admin;Password=admin1234"
+    depends_on:
+      - mydiscountdb
+    ports:
+      - "8003:80"

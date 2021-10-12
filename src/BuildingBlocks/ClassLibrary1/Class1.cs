@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ordering.Infrastructure
+namespace ClassLibrary1
 {
     public class Class1
     {

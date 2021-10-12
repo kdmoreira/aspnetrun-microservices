@@ -13,6 +13,12 @@ services:
   mydiscountdb:
     image: postgres
 
+  myorderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   pgadmin:
     image: dpage/pgadmin4
 
@@ -42,10 +48,17 @@ services:
 
 
 
+  myordering.api:
+    image: ${DOCKER_REGISTRY-}myorderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
+
 
 

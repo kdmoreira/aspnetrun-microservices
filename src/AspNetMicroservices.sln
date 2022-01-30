@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2C48C957-8B37-457A-9C47-9F9ADC35CAA2}"
 EndProject
@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messages", "Buildi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{47CD03E7-0173-4E4A-9609-67B8650E9637}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "ApiGateways\OcelotApiGw\OcelotApiGw.csproj", "{8B83CD72-D535-45D9-A4EA-AA4457241375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGw", "ApiGateways\OcelotApiGw\OcelotApiGw.csproj", "{8B83CD72-D535-45D9-A4EA-AA4457241375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Aggregator", "ApiGateways\Shopping.Aggregator\Shopping.Aggregator.csproj", "{61633C41-7F72-4691-8025-5E7929ADFFED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{8B83CD72-D535-45D9-A4EA-AA4457241375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B83CD72-D535-45D9-A4EA-AA4457241375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B83CD72-D535-45D9-A4EA-AA4457241375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61633C41-7F72-4691-8025-5E7929ADFFED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61633C41-7F72-4691-8025-5E7929ADFFED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61633C41-7F72-4691-8025-5E7929ADFFED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61633C41-7F72-4691-8025-5E7929ADFFED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{D3D223BB-DE27-45F9-A7FB-AD3250B826F3} = {9F3F6084-9A32-4749-A299-179A7DB14334}
 		{87961E88-45FA-466A-B133-48C2C42E551F} = {0F6C5D3E-DA67-48FE-B349-DB021F395004}
 		{8B83CD72-D535-45D9-A4EA-AA4457241375} = {47CD03E7-0173-4E4A-9609-67B8650E9637}
+		{61633C41-7F72-4691-8025-5E7929ADFFED} = {47CD03E7-0173-4E4A-9609-67B8650E9637}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B703BC10-AA7E-47E2-835B-AFDE2A29671F}

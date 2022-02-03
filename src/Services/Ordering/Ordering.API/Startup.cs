@@ -9,6 +9,7 @@ using Ordering.Infrastructure;
 using MassTransit;
 using EventBus.Messages.Common;
 using Ordering.API.EventBusConsumer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Ordering.Api
 {
@@ -24,6 +25,17 @@ namespace Ordering.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:16106";
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+
             services.AddApplicationServices();
             services.AddInfrastructureServices(Configuration);
 
@@ -66,7 +78,7 @@ namespace Ordering.Api
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

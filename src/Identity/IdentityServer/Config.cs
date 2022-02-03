@@ -17,6 +17,36 @@ namespace IdentityServer
                     new Secret("secret" .Sha256())
                 },
                 AllowedScopes = { "catalogAPI" }
+            },
+            new Client
+            {
+                ClientId = "basketClient",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets =
+                {
+                    new Secret("secret" .Sha256())
+                },
+                AllowedScopes = { "basketAPI" }
+            },
+            new Client
+            {
+                ClientId = "discountClient",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets =
+                {
+                    new Secret("secret" .Sha256())
+                },
+                AllowedScopes = { "discountAPI" }
+            },
+            new Client
+            {
+                ClientId = "orderingClient",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets =
+                {
+                    new Secret("secret" .Sha256())
+                },
+                AllowedScopes = { "orderingAPI" }
             }
         };
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[] { new ApiScope("catalogAPI", "Catalog API") };

@@ -1,4 +1,6 @@
 using AspnetRunBasics.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +22,30 @@ namespace AspnetRunBasics
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
+            {
+                options.Authority = "http://localhost:5011";
+
+                options.ClientId = "shopping_web";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code id_token";
+
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("catalogAPI");
+                options.Scope.Add("discountAPI");
+                options.Scope.Add("basketAPI");
+                options.Scope.Add("orderingAPI");
+                options.SaveTokens = true;
+                options.GetClaimsFromUserInfoEndpoint = true;
+            });
+
             services.AddHttpClient<ICatalogService, CatalogService>(c =>
                 c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
 

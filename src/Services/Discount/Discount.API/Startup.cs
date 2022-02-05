@@ -24,7 +24,7 @@ namespace Discount.API
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:16106";
+                    options.Authority = "http://localhost:5011";
                     options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {

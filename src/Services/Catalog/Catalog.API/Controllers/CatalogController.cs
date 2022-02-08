@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Catalog.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class CatalogController : ControllerBase

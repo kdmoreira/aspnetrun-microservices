@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Discount.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class DiscountController : ControllerBase
